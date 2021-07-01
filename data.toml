@@ -94,7 +94,7 @@ title = "Insufficient synchronization in `Arc::get_mut`"
 [[cve]]
 id = "CVE-2019-1010299"
 issue = 53566
-introduced = "1.1.8.0"
+introduced = "1.18.0"
 fixed = "1.30.0"
 title = "vec_deque::Iter has unsound Debug implementation"
 

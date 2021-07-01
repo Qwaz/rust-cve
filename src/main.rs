@@ -2,8 +2,22 @@ use askama::Template;
 use semver::Version;
 use serde::Deserialize;
 
+fn escape_md(s: &str) -> String {
+    s.replace('\\', "\\\\")
+        .replace('[', "\\[")
+        .replace(']', "\\]")
+        .replace('<', "\\<")
+        .replace('>', "\\>")
+        .replace('(', "\\(")
+        .replace(')', "\\)")
+        .replace('#', "\\#")
+        .replace('|', "&#124;")
+}
+
 mod filters {
-    use crate::Report;
+    use reqwest::StatusCode;
+
+    use crate::{escape_md, Report};
 
     pub fn cve_entry(report: &Report) -> askama::Result<String> {
         let affected = match (&report.introduced, &report.fixed) {
@@ -11,6 +25,14 @@ mod filters {
             (Some(from), None) => format!(">= {}", from),
             (None, None) => String::from("TODO"),
             _ => panic!("fixed field is set without introduced field"),
+        };
+
+        let rustsec_url = format!("https://rustsec.org/advisories/{}.html", report.id);
+        let response = reqwest::blocking::get(&rustsec_url).expect("Failed to get URL");
+        let rustsec = if response.status() != StatusCode::OK {
+            String::from("TODO")
+        } else {
+            format!("[link]({})", rustsec_url)
         };
 
         Ok(format!(
@@ -22,9 +44,9 @@ mod filters {
             ),
             issue = report.issue,
             issue_url = format!("https://github.com/rust-lang/rust/issues/{}", report.issue),
-            title = report.title,
+            title = escape_md(&report.title),
             affected = affected,
-            rustsec = "TODO"
+            rustsec = rustsec
         ))
     }
 }
