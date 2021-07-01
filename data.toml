@@ -1,0 +1,76 @@
+[[cve]]
+id = "CVE-2015-20001"
+issue = 25842
+introduced = "1.0.0"
+fixed = "1.2.0"
+title = "Panic safety violation in BinaryHeap"
+
+[[cve]]
+id = "CVE-2018-1000657"
+issue = 44800
+introduced = "1.3.0"
+fixed = "1.22.0"
+title = "Buffer overflow vulnerability in VecDeque::reserve()"
+
+[[cve]]
+id = "CVE-2018-1000810"
+issue = 54399
+introduced = "1.26.0"
+fixed = "1.29.1"
+title = "Buffer overflow vulnerability in str::repeat()"
+
+[[cve]]
+id = "CVE-2019-12083"
+issue = 60787
+introduced = "1.34.0"
+fixed = "1.34.2"
+title = "Memory safety vulnerabilities arising from `Error::type_id`"
+
+[[cve]]
+id = "CVE-2020-36317"
+issue = 78498
+introduced = "1.26.0"
+fixed = "1.49.0"
+title = "String::retain allows safely creating invalid strings when abusing panic"
+
+[[cve]]
+id = "CVE-2020-36318"
+issue = 79808
+introduced = "1.48.0"
+fixed = "1.49.0"
+title = "VecDeque::make_contiguous may duplicate the contained elements"
+
+[[cve]]
+id = "CVE-2021-28877"
+issue = 80670
+introduced = "1.11.0"
+fixed = "1.51.0"
+title = "TrustedRandomAaccess specialization composes incorrectly for nested iter::Zips"
+
+[[cve]]
+id = "CVE-2021-28875"
+issue = 80894
+introduced = "1.20.0"
+fixed = "1.50.0"
+title = "Logic bug in Read can cause buffer overflow in read_to_end()"
+
+[[cve]]
+id = "CVE-2021-28876"
+issue = 81740
+introduced = "1.14.0"
+fixed = "1.52.0"
+title = "Panic safety issue in Zip specialization"
+
+[[cve]]
+id = "CVE-2021-28879"
+issue = 82282
+introduced = "1.14.0"
+fixed = "1.52.0"
+title = "Zip can cause buffer overflow when a consumed Zip iterator is used again"
+
+[[cve]]
+id = "CVE-2021-28878"
+issue = 82291
+introduced = "1.14.0"
+fixed = "1.52.0"
+title = "Zip may call __iterator_get_unchecked twice with the same index"
