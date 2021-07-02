@@ -62,7 +62,7 @@ mod filters {
             issue_url = format!("https://github.com/rust-lang/rust/issues/{}", entry.issue),
             title = escape_md(&entry.title),
             affected = affected,
-            applied = if entry.applied { "YES" } else { "NO" }
+            applied = if entry.applied { "Yes" } else { "No" }
         ))
     }
 }
@@ -101,4 +101,6 @@ fn main() {
 
     let rendered = data.render().expect("Failed to render");
     std::fs::write("README.md", rendered).expect("failed to write `README.md`");
+
+    println!("Successfully generated README.md");
 }

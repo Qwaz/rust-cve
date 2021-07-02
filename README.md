@@ -52,9 +52,9 @@ I'll still update the CVE list above if such bug get assigned a CVE ID.
 
 | Issue # | Title | Affected | CVE ID Requested |
 | ------- | ----- | -------- | ---------------- |
-| [81138](https://github.com/rust-lang/rust/issues/81138) | String::replace_range is unsound | TODO | NO |
-| [85322](https://github.com/rust-lang/rust/issues/85322) | The implementation of `InPlaceIterable` for `Peekable` is unsound | TODO | NO |
-| [85613](https://github.com/rust-lang/rust/issues/85613) | Double free in Vec::dedup_by when T's drop panics | TODO | NO |
-| [85813](https://github.com/rust-lang/rust/issues/85813) | Unsound Debug impl for collections::linked_list::IterMut | TODO | NO |
-| [85873](https://github.com/rust-lang/rust/issues/85873) | TrustedRandomAccess optimization for Zip containing vec::IntoIter is unsound | TODO | NO |
-| [86443](https://github.com/rust-lang/rust/issues/86443) | Panic safety issue in `Zip::next_back()` TrustedRandomAccess specialization | TODO | NO |
+| [81138](https://github.com/rust-lang/rust/issues/81138) | String::replace_range is unsound | TODO | No |
+| [85322](https://github.com/rust-lang/rust/issues/85322) | The implementation of `InPlaceIterable` for `Peekable` is unsound | TODO | No |
+| [85613](https://github.com/rust-lang/rust/issues/85613) | Double free in Vec::dedup_by when T's drop panics | TODO | No |
+| [85813](https://github.com/rust-lang/rust/issues/85813) | Unsound Debug impl for collections::linked_list::IterMut | TODO | No |
+| [85873](https://github.com/rust-lang/rust/issues/85873) | TrustedRandomAccess optimization for Zip containing vec::IntoIter is unsound | TODO | No |
+| [86443](https://github.com/rust-lang/rust/issues/86443) | Panic safety issue in `Zip::next_back()` TrustedRandomAccess specialization | TODO | No |
