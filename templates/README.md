@@ -3,7 +3,7 @@
 ## Preface
 
 This is a list of CVEs for unsound APIs in the Rust standard library.
-All of these bugs break Rust's memory safety guarantee
+These bugs break Rust's memory safety guarantee
 and lead to security issues when triggered.
 Fortunately, they are context-sensitive library APIs
 that are not usually used in a way that the bugs can be triggered.
@@ -23,9 +23,24 @@ and I found that issuing a CVE number and creating a RustSec advisory is the mos
 
 | CVE | Issue # | Title | Affected | RustSec |
 | --- | ------- | ----- | -------- | ------- |
-{% for entry in cve %}{{ entry|cve_entry }}{% endfor %}
+
+{%- for entry in cve %}
+{{ entry|cve_entry }}
+{%- endfor %}
 
 ## Backlog
 
-I believe these bugs also deserve CVE numbers,
-but they are not reported to CVE authority (e.g., MITRE) yet.
+These are soundness bugs that I plan to apply CVE IDs for.
+Note that I focus on soundness bugs that arise from misuse of unsafe Rust code in the standard library,
+so certain soundness bugs are not included in this list such as type-system bugs
+(e.g., [#25860](https://github.com/rust-lang/rust/issues/25860))
+or environmental bugs
+(e.g., [#81996](https://github.com/rust-lang/rust/issues/81996)).
+I'll still update the CVE list above if such bug get assigned a CVE ID.
+
+| Issue # | Title | Affected | CVE ID Requested |
+| ------- | ----- | -------- | ---------------- |
+
+{%- for entry in backlog %}
+{{ entry|backlog_entry }}
+{%- endfor %}

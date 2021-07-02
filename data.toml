@@ -111,3 +111,34 @@ issue = 83618
 introduced = "1.48.0"
 fixed = "1.52.0"
 title = "Double free in Vec::from_iter specialization when drop panics"
+
+# Bugs in backlog
+[[backlog]]
+issue = 86443
+title = "Panic safety issue in `Zip::next_back()` TrustedRandomAccess specialization"
+applied = false
+
+[[backlog]]
+issue = 81138
+title = "String::replace_range is unsound"
+applied = false
+
+[[backlog]]
+issue = 85322
+title = "The implementation of `InPlaceIterable` for `Peekable` is unsound"
+applied = false
+
+[[backlog]]
+issue = 85613
+title = "Double free in Vec::dedup_by when T's drop panics"
+applied = false
+
+[[backlog]]
+issue = 85813
+title = "Unsound Debug impl for collections::linked_list::IterMut"
+applied = false
+
+[[backlog]]
+issue = 85873
+title = "TrustedRandomAccess optimization for Zip containing vec::IntoIter is unsound"
+applied = false
