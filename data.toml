@@ -59,7 +59,7 @@ title = "Logic bug in Read can cause buffer overflow in read_to_end()"
 [[cve]]
 id = "CVE-2021-28876"
 issue = 81740
-found_by = "Rudra"
+found_by = "Myself"
 introduced = "1.14.0"
 fixed = "1.52.0"
 title = "Panic safety issue in Zip specialization"
