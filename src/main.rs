@@ -39,7 +39,7 @@ mod filters {
         };
 
         Ok(format!(
-            "| [{id}]({id_url}) | [{issue}]({issue_url}) {found_by_symbol} | {title} | {affected} | {rustsec} |",
+            "| [{id}]({id_url}) | [{issue}{found_by_symbol}]({issue_url}) | {title} | {affected} | {rustsec} |",
             id = entry.id,
             id_url = format!(
                 "https://cve.mitre.org/cgi-bin/cvename.cgi?name={}",
@@ -58,7 +58,7 @@ mod filters {
         let affected = affected_string(&entry.introduced, &entry.fixed);
 
         Ok(format!(
-            "| [{issue}]({issue_url}) {found_by_symbol} | {title} | {affected} | {applied} |",
+            "| [{issue}{found_by_symbol}]({issue_url}) | {title} | {affected} | {applied} |",
             issue = entry.issue,
             issue_url = format!("https://github.com/rust-lang/rust/issues/{}", entry.issue),
             found_by_symbol = entry.found_by.symbol(),
