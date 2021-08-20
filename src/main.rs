@@ -39,7 +39,7 @@ mod filters {
         };
 
         Ok(format!(
-            "| [{id}]({id_url}) | [{issue}]({issue_url}) | {title} | {affected} | {rustsec} |",
+            "| [{id}]({id_url}) | [{issue}]({issue_url}) {found_by_symbol} | {title} | {affected} | {rustsec} |",
             id = entry.id,
             id_url = format!(
                 "https://cve.mitre.org/cgi-bin/cvename.cgi?name={}",
@@ -47,6 +47,7 @@ mod filters {
             ),
             issue = entry.issue,
             issue_url = format!("https://github.com/rust-lang/rust/issues/{}", entry.issue),
+            found_by_symbol = entry.found_by.symbol(),
             title = escape_md(&entry.title),
             affected = affected,
             rustsec = rustsec
@@ -57,9 +58,10 @@ mod filters {
         let affected = affected_string(&entry.introduced, &entry.fixed);
 
         Ok(format!(
-            "| [{issue}]({issue_url}) | {title} | {affected} | {applied} |",
+            "| [{issue}]({issue_url}) {found_by_symbol} | {title} | {affected} | {applied} |",
             issue = entry.issue,
             issue_url = format!("https://github.com/rust-lang/rust/issues/{}", entry.issue),
+            found_by_symbol = entry.found_by.symbol(),
             title = escape_md(&entry.title),
             affected = affected,
             applied = if entry.applied { "Yes" } else { "No" }
@@ -67,10 +69,35 @@ mod filters {
     }
 }
 
+#[derive(Deserialize, Clone, Copy)]
+pub enum FoundBy {
+    Someone,
+    Myself,
+    Rudra,
+}
+
+impl Default for FoundBy {
+    fn default() -> Self {
+        FoundBy::Someone
+    }
+}
+
+impl FoundBy {
+    fn symbol(self) -> &'static str {
+        match self {
+            FoundBy::Someone => "",
+            FoundBy::Myself => "†",
+            FoundBy::Rudra => "‡",
+        }
+    }
+}
+
 #[derive(Deserialize, Clone)]
 pub struct CveItem {
     id: String,
     issue: usize,
+    #[serde(default)]
+    found_by: FoundBy,
     introduced: Option<Version>,
     fixed: Option<Version>,
     title: String,
@@ -79,6 +106,8 @@ pub struct CveItem {
 #[derive(Deserialize, Clone)]
 pub struct BacklogItem {
     issue: usize,
+    #[serde(default)]
+    found_by: FoundBy,
     introduced: Option<Version>,
     fixed: Option<Version>,
     title: String,

@@ -16,6 +16,9 @@ Moreover, certain applications such as [TockOS][tockos] and [RedLeaf][redleaf] t
 Hence, it is important to signal the existence of these bugs,
 and I found that issuing a CVE number and creating a RustSec advisory is the most effective way to do so.
 
+†: Reported by me
+‡: Reported as part of [Rudra](https://github.com/sslab-gatech/Rudra) project
+
 [tockos]: https://www.tockos.org/
 [redleaf]: https://mars-research.github.io/redleaf
 
